@@ -144,3 +144,29 @@ def inorderTraversal(self, root: TreeNode) -> List[int]:
 
 
 
+append() VS extend() in Python ?
+
+**[extend()](https://www.geeksforgeeks.org/list-methods-python/):** Iterates over its argument and adding each element to the list and extending the list. The length of the list increases by number of elements in it’s argument.
+
+```python
+
+my_list = ['geeks', 'for'] 
+another_list = [6, 0, 4, 1] 
+my_list.extend(another_list) 
+print my_list  #['geeks', 'for', 6, 0, 4, 1]
+
+my_list = ['geeks', 'for', 6, 0, 4, 1] 
+my_list.extend('geeks') 
+print my_list #['geeks', 'for', 6, 0, 4, 1, 'g', 'e', 'e', 'k', 's']
+
+Time Complexity:
+Append has constant time complexity i.e.,O(1).
+Extend has time complexity of O(k). Where k is the length of list which need to be added.
+```
+
+python获取value的方法：
+
+```
+dict.values()
+```
+
