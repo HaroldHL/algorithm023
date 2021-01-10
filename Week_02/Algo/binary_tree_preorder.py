@@ -10,7 +10,7 @@
                 dfs(root.right)
             dfs(root)
             return res  
-        #iterative solution
+        #iterative template solution
         def preorderTraversal(self, root: TreeNode) -> List[int]:
             if not root:return []
             stack, res = [root],[]

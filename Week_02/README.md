@@ -26,6 +26,33 @@ def dfs(root):
 
 dfs(root)
 return res
+
+def dfs(root):
+  res = []
+  if not root:
+    return
+  
+  dfs(root.left)
+	res.append(root.val) #中序
+  dfs(root.right)
+
+dfs(root)
+return res
+
+dfs(root)
+return res
+
+def dfs(root):
+  res = []
+  if not root:
+    return
+  
+  dfs(root.left)
+  dfs(root.right)
+  res.append(root.val) #后序
+
+dfs(root)
+return res
 ```
 
 迭代的解法
@@ -55,5 +82,65 @@ def preorderTraversal(self, root: TreeNode) -> List[int]:
 
 *模板解法*
 
-先将根节点 `cur` 和所有的左孩子入栈并加入结果中，直至 `cur` 为空，用一个 `while` 循环实现：
+* 先将根节点 `cur` 和所有的左孩子入栈并加入结果中，直至 `cur` 为空，用一个 `while` 循环实现
+* 每弹出一个栈顶元素temp 就达到它的右孩子，再将整个节点当做`cur`重新按上面的步骤来一遍，直至栈为空。需要一个while循环
+
+```python
+def preorderTraversal(self, root: TreeNode) -> List[int]:
+  	if not root:return []
+        
+        cur,stack,res = root,[],[]
+        while cur or stack:
+            while cur: # 根节点和左孩子入栈
+                res.append(cur.val)
+                stack.append(cur)
+                cur = cur.left
+            temp = stack.pop() # 每次弹出一个元素，就达到右孩子
+            cur = temp.right
+        return res
+      
+```
+
+```python
+#中序
+
+def inorderTraversal(self, root: TreeNode) -> List[int]:
+  	if not root: return
+    
+    cur,stack,res = root,[],[]
+    
+    while cur or stack:
+      while cur: 
+        stack.append(cur)
+        cur = cur.left
+      temp = stack.pop()
+      res.append(temp.val) # 出栈时加入结果
+      cur = temp.right
+    return res
+```
+点 `cur` 先到达最右端的叶子节点并将路径上的节点入栈；
+
+然后每次从栈中弹出一个元素后，`cur` 到达它的左孩子，并将左孩子看作 `cur` 继续执行上面的步骤。
+
+最后将结果反向输出即可
+
+```python
+
+ def postorderTraversal(self, root: TreeNode) -> List[int]:
+        cur,stack,res = root,[],[]
+
+        while cur or stack:
+            while cur:
+                res.append(cur.val)
+                stack.append(cur)
+                cur = cur.right
+            temp = stack.pop()
+            cur = temp.left
+        
+        return res[::-1] 
+```
+
+
+
+
 
