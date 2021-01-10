@@ -28,7 +28,15 @@ dfs(root)
 return res
 ```
 
-迭代的模板
+迭代的解法
+
+a:
+
+* 初始化栈，讲根节点入栈
+* 栈不为空的时候：
+  * 弹出栈顶Node，并且将值添加到结果中
+  * 如果node的右子树不为空，右子树先入栈(这边是前序，因为栈的特性是先进后出)
+  * 如果node的左子树不为空，左子树入栈 
 
 ```python
 def preorderTraversal(self, root: TreeNode) -> List[int]:
@@ -44,4 +52,8 @@ def preorderTraversal(self, root: TreeNode) -> List[int]:
                     stack.append(node.left)
         return res
 ```
+
+*模板解法*
+
+先将根节点 `cur` 和所有的左孩子入栈并加入结果中，直至 `cur` 为空，用一个 `while` 循环实现：
 
