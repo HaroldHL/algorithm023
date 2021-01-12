@@ -22,3 +22,5 @@ def recursion(level, param1, param2, ...): 
 * 不要人肉进行递归
 * 找到最近最简方法，将其拆解成可重复解决的子问题
 * 数学归纳法思维
+
+Sort() n* logn
