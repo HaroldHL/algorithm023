@@ -40,3 +40,6 @@ class Solution:
         return res
 
 print(Solution().permute(nums=[1,1,2]))
+
+# 时间复杂度：O(N * N!)
+# 空间复杂度：O(N!)

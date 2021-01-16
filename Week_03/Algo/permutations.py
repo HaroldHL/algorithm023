@@ -53,3 +53,5 @@ class Solution:
         return res
 
 print(Solution().permute(nums=[1,2,3]))
+# 时间复杂度：O(N * N!)
+# 空间复杂度：O(N!)
