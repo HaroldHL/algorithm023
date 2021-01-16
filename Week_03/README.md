@@ -25,6 +25,10 @@ def recursion(level, param1, param2, ...): 
 
 Sort():  n* logn
 
+#### 如何计算递归算法的时间复杂度
+
+用子问题个数乘以解决一个子问题所需要的时间
+
 
 
 
