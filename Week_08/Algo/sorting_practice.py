@@ -1,46 +1,64 @@
+#Bubble Sort n^2
+def bubble_sort(arr):
+    for i in range(1,len(arr)):
+        for j in range(0,len(arr)-i):
+            if arr[j] > arr[j+1]:
+                arr[j],arr[j+1]= arr[j+1],arr[j]
+    return arr
 
-from typing import List
-import collections
-import itertools
-import functools
-import math
-import string
-import random
-import bisect
-import re
-import operator
-import heapq
-import queue
+print(bubble_sort([12,3,1,2,0,5]))
 
-from queue import PriorityQueue
-from itertools import combinations, permutations
-from functools import lru_cache
-from collections import defaultdict
-from collections import OrderedDict
-from collections import deque
-from collections import Counter
-#输入：[5,1,1,2,0,0]
-#输出：[0,0,1,1,2,5]
-# bubble sort
-class Solution:
-    def bubble_sort(self,nums):
-        for i in range(1, len(nums)):
-            for j in range(0, len(nums)-i):
-                if nums[j] > nums[j+1]:
-                    nums[j], nums[j + 1] = nums[j + 1], nums[j]
-        return nums
 
-    # print(Solution().bubble_sort(nums=[5,1,1,2,0,0]))
-    def selection_sort(self,nums):
-        for i in range(len(nums) - 1):
-            # 记录最小数的索引
-            minIndex = i
-            for j in range(i + 1, len(nums)):
-                if nums[j] < nums[minIndex]:
-                    minIndex = j
-            # i 不是最小数时，将 i 和最小数进行交换
-            if i != minIndex:
-                nums[i], nums[minIndex] = nums[minIndex], nums[i]
-        return nums
-    
-print(Solution().selection_sort(nums=[5,1,1,2,0,0]))           
+#Quick Sort
+def quickSort(arr, left=None, right=None):
+    left = 0 if not isinstance(left,(int, float)) else left
+    right = len(arr)-1 if not isinstance(right,(int, float)) else right
+    if left < right:
+        partitionIndex = partition(arr, left, right)
+        quickSort(arr, left, partitionIndex-1)
+        quickSort(arr, partitionIndex+1, right)
+    return arr
+
+def partition(arr, left, right):
+    pivot = left
+    index = pivot+1
+    i = index
+    while  i <= right:
+        if arr[i] < arr[pivot]:
+            swap(arr, i, index)
+            index+=1
+        i+=1
+    swap(arr,pivot,index-1)
+    return index-1
+
+def swap(arr, i, j):
+    arr[i], arr[j] = arr[j], arr[i]
+
+print(quickSort([12,3,1,2,0,5]))
+
+
+#Selection Sort
+def selection_sort(arr):
+    for i in range(len(arr) - 1):
+        minIndex = i
+        for j in range(i + 1, len(arr)):
+            if arr[j] < arr[minIndex]:
+                minIndex = j
+        if i != minIndex:
+            arr[i], arr[minIndex] = arr[minIndex], arr[i]
+    return arr
+print(selection_sort([12,3,1,2,0,5]))
+
+
+def insertionSort(arr):
+    for i in range(len(arr)):
+        preIndex = i-1
+        current = arr[i]
+        while preIndex >=0 and arr[preIndex] > current:
+            arr[preIndex+1] =  arr[preIndex]
+            preIndex -=1
+        arr[preIndex+1] = current
+    return arr
+        
+print(insertionSort([12,3,1,2,0,5]))
+
