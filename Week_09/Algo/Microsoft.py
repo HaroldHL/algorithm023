@@ -26,10 +26,30 @@ def firstUniqChar(s):
         if hashMap.get(s[i]) == 1:
             return i
     return -1
-    
-    
+
+def reverseWords(s):
+    #empty space
+    s = s.strip()
+    strs = s.split()
+    strs.reverse()
+    return ' '.join(strs)
+
+def reverseWords3(s):
+    return ''.join(s.split()[::-1])[::-1]
+
+
+def isIsomorphic(s,t):
+    hashmaps = {}
+    hashmapt = {}
+    for i in range(len(s)):
+        if s[i] not in hashmaps: hashmaps[s[i]] = i
+        if t[i] not in hashmapt: hashmapt[t[i]] = i
+        
+        if (hashmaps.get(s[i]) != hashmapt.get(t[i])): return False
+
+    return True
 if __name__ == '__main__':
-    s = "42"
-    print(myAtoi(s))
-    str1 = "leetcode"
-    print(firstUniqChar(str1))
+    print(myAtoi("42"))
+    print(firstUniqChar("leetcode"))
+    print(reverseWords("the sky is blue"))
+    print(reverseWords3("Let's take LeetCode contest"))

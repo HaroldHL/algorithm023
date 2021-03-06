@@ -26,6 +26,19 @@ def numJewelsInStones(jewels,stones):
                 res += hashMap[c]
         return res
 
+def reverseOnlyLetters(S):
+        stack = []
+        res = []
+        for c in S:
+            if c.isalpha():
+                stack.append(c)
+        for c in S:
+            if c.isalpha():
+                res.append(stack.pop())
+            else:
+                res.append(c)
+        return "".join(res)
+
 def firstUniqChar(s):
     hashMap = {}
     for ch in s:
@@ -38,8 +51,25 @@ def firstUniqChar(s):
             return i
     return -1
 
+def validPalindrome2(s):
+        def isPalindrome(i,j):
+            while i <j:
+                if s[i] != s[j]:
+                    return False
+                i +=1
+                j -=1
+            return True
+        i,j = 0,len(s)-1
+        while i <j:
+            if s[i] != s[j]:
+                return isPalindrome(i+1, j) or isPalindrome(i, j-1)
+            i +=1
+            j -=1
+        return True
+    
 if __name__=='__main__':
     str1 = 'Hello'
     print(toLowerCase(str1))
     print(numJewelsInStones("aA","aAAbbbb"))
     print(firstUniqChar("loveleetcode"))
+    print(reverseOnlyLetters("ab-cd"))
